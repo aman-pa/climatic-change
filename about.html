@@ -1,0 +1,159 @@
+ 
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Climate Change Data Visualization</title>
+       <link rel="stylesheet" href="styles.css">
+       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+       <style>
+           body {
+               font-family: Arial, sans-serif;
+               background-color: coral;
+               color: #333;
+               margin: 0;
+               padding: 0;
+           }
+   
+           header {
+               background-color: black;
+               color: white;
+               text-align: center;
+               padding: 20px;
+           }
+   
+           header h1 {
+               margin: 0;
+           }
+   
+           nav ul {
+               list-style-type: none;
+               padding: 0; font-size: 20px;
+           }
+   
+           nav ul li {
+               display: inline;
+               margin-right: 15px;
+           }
+   
+           nav ul li a {
+               color: white;
+               text-decoration: none;font-size: 30px;
+           }
+   
+           section {
+               padding: 20px;
+               text-align: center;
+           }
+   
+           #pandey {
+               display: flex;
+               justify-content: center;
+               gap: 20px;
+               flex-wrap: wrap;
+               margin-top: 20px;
+               width: 1200px; margin-left: 300px;
+           }
+   
+           #pandey img {
+               height: 250px;
+               width: auto;
+               border: 2px solid #333;
+               border-radius: 10px;
+               transition: transform 0.5s ease;
+               animation: rotateAndMove 6s infinite alternate ease-in-out;
+           }
+   
+           #pandey img:hover {
+               transform: scale(1.1); width:30px ;
+           }
+   
+           @keyframes rotateAndMove {
+               0% {
+                   transform: rotate(0deg) translateY(0px);
+               }
+               50% {
+                   transform: rotate(5deg) translateY(-10px);
+               }
+               100% {
+                   transform: rotate(-5deg) translateY(10px);
+               }
+           }
+   
+           footer {
+               background-color: black;
+               color: white;
+               text-align: center;
+               padding: 10px;
+               bottom: 0;
+               width: 100%;
+           }
+           #hh{font-size: 40px; color: chartreuse; background-color: bisque;}
+           #am{font-size: 50px; color: crimson;}
+           #clmx{font-size: 30px;font-size: 40px;}
+           #so{background-color: darkslategrey; width: 1700px; height: 450px;}
+           h3{font-size: 40px; color: darksalmon;}
+           p{color: red; font-size: 25px; font-family: Verdana, Geneva, Tahoma, sans-serif; }
+           a:hover{
+            color: aqua;} span{color: crimson;font-size: 45px;background-color: coral;} #om{color: blue;font-size: 30px;}#ap{color: darkmagenta; font-size: 30px;background-color: #333;}#pp{color: aqua; font-size: 50px; background-color: cadetblue;}#kk{font-size: 30px;color: blue;font-family: 'Times New Roman', Times, serif;}#pk{color: greenyellow; font-size: 30px;font-family: Georgia, 'Times New Roman', Times, serif;}#ii{font-size: 30px;}</style>
+   </head>
+   <body >
+       <header>
+           <h1 id="am">Climate Change Data Visualization....</h1>
+           <nav>
+               <ul><li><a href="home.html">Home</a></li>
+                   <li><a href="about.html">About</a></li>
+                   <li><a href="data-visualization.html">Impact on health</a></li>
+                 
+                   <li><a href="3d.html">Graphs</a></li>
+                   <li><a href="effects.html">Effects</a></li>
+                   <li><a href="outcomes.html">Outcomes</a></li>  <li><a href="contact.html">Contact</a></li>
+               </ul>
+           </nav>
+       </header>
+   
+       <section id="about">
+           <h2 id="hh">What is Climate Change Data Visualization?</h2>
+           <p>
+               <h3 id="clmx">Climate change data visualization refers to the graphical representation of data related to climate change, aiming to make complex information more understandable and accessible. It encompasses various techniques and tools to illustrate trends, impacts, and projections associated with climate change.</h3><br>
+   
+               
+               <h2 id="clmx"><span>Types of Visualizations:</span></h2><br>
+               
+             <div id="so">  <h3>Graphs and Charts:<br><br>
+                   <div id="pandey">
+                       <img src="graph.jfif" alt="Graph Visualization">
+                       <img src="globaltemp.jfif" alt="Global Temperature Visualization">
+                       <img src="evs.jfif" alt="Climate Effects Visualization">
+                   </div>
+               </h3></div>
+               <br>
+               <h2 id="om">Line graphs showing temperature trends, bar charts illustrating emissions by sector, etc.
+               Maps: Visual representations of geographic data, such as heat maps indicating areas most affected by climate change or projections of sea level rise.<br>
+               <h3 id="clmx">Infographics:</h3><p id="ii"> Combining text and visuals to convey key messages and statistics in an engaging way.
+               Dashboards: Interactive platforms that allow users to explore multiple datasets and visualizations simultaneously.
+               </h2><br></p>
+               
+               <h3 id="clmx">Communication:</h3><br>
+               <h2 id="ap">To effectively convey the urgency and scale of climate change to diverse audiences, including policymakers, businesses, and the general public.
+               Education: Helping individuals understand complex scientific data and its implications for society and the environment.
+               Decision-Making: Aiding stakeholders in making informed decisions based on clear data insights.</h2><br>
+               
+               <h3 id="pp">Tools and Technologies:</h3><br>
+               <h2 id="kk">Software like Tableau, R, Python (Matplotlib, Seaborn), and GIS platforms are commonly used to create visualizations.
+               Online resources such as Climate.gov and Our World in Data provide ready-made visualizations and datasets.
+               </h2><br>
+               
+               <h3 id="pp">Data Quality:</h3><br>
+               <h2 id="pk">Ensuring accuracy and consistency in data collection and representation.
+               Complexity: Balancing the simplification of data with the need to retain essential context and nuances.
+               Public Engagement: Making visualizations compelling enough to motivate action and change perceptions.</h2>
+           </p>
+       </section>
+   
+       <footer>
+           <p>&copy; 2024 Climate Change Data. All Rights Reserved.</p>
+       </footer>
+   </body>
+   </html>

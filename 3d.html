@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Data Visualization</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #header {
+            text-align: center;
+            background-color: khaki;
+            color: white;
+            padding: 20px;
+            width: 100%;
+        }
+
+        #header h1 {
+            margin: 0;
+        }
+
+        #info {
+            max-width: 800px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        info h2 {
+            color: #0055aa;
+        }
+
+        #description {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            
+            border-radius: 5px;
+        }
+
+        #canvas-container {
+            width: 90%;
+            max-width: 1200px;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        canvas {
+            display: block;
+            border: 5px solid red;
+            border-radius: 10px;
+        }
+        header {
+    background-color: red;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow:;
+    
+}
+#ac{background-color: gold;}
+
+header h1 {
+    margin: 0; 
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center; 
+}
+
+nav ul li {
+    margin: 0 15px;
+}#pa{font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+
+nav ul li a {
+    color: red;
+    text-decoration: none;
+    font-weight: bold; color: red; font-size: 20px; font-size: 30px;
+}
+p{font-size: 30px; color: brown; background-color: antiquewhite;}
+#ab{font-size: 50px; color: blueviolet;}
+#ac{font-size: 50px; color: crimson;}
+#ax{color: deeppink; font-size: 40px;}
+#bk{background-image: url(earth.jfif);
+background-repeat: no-repeat; background-size: cover;}
+a:hover{
+    color: green;
+}
+#dd{
+    color: black;
+}
+    </style>
+</head>
+<body> 
+    
+</header>
+
+    <div id="header">
+        <h1 id="ax">Climate Change Data Visualization</h1>
+        
+        <nav>
+            <ul><li><button><a href="home.html">Home</button></a></li>
+                <li><button><a href="about.html">About</button></a></li>
+                <li><button><a href="data-visualization.html">Impact on health</a></button></li>
+                <li><button><a id="dd" href="3d.html">Graphs </button></a></li><li><button><a href="effects.html"></abutt>Effects</button> </a></li><li><button><a href="outcomes.html">Outcomes</a></button></li>      <li><button><a href="contact.html">Contact</button></a></li></ul>
+
+      </nav></div>
+<div id="bk">
+    <div id="container">
+        <div id="info">
+            <h2 id="ab">What is Climate Change?</h2>
+            <p id="pa">Climate change refers to long-term changes in global temperatures and other atmospheric conditions. It is primarily driven by human activities, such as burning fossil fuels, deforestation, and industrial processes, which release greenhouse gases into the atmosphere.</p>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <div id="description">
+            <h2 id="ac">About the Visualization</h2>
+            <p>This 3D graph shows global temperature anomalies from 2000 to 2024. Each bar represents the average deviation from standard temperatures over the years. The bars move to highlight the dynamic nature of climate...</p>
+            <iframe width="860" height="515" src="https://www.youtube.com/embed/3-Auqn6kjRY?si=xt0uVrrY-23B3AS6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Basic scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.5);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Dummy data for visualization (Temperature change over years)
+        const data = [
+            { year: 2000, value: 0.2 },
+            { year: 2005, value: 0.4 },
+            { year: 2010, value: 0.6 },
+            { year: 2015, value: 0.8 },
+            { year: 2020, value: 1.0 },
+            { year: 2023, value: 1.2 }
+        ];
+
+        // Font loader for text
+        const loader = new THREE.FontLoader();
+
+        // Create bars for the graph
+        const bars = [];
+        loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
+            data.forEach((point, index) => {
+                const geometry = new THREE.BoxGeometry(0.5, point.value * 5, 0.5);
+                const material = new THREE.MeshBasicMaterial({ color: 0x008800 });
+                const bar = new THREE.Mesh(geometry, material);
+                bar.position.set(index - data.length / 2, point.value / 2, 0);
+                scene.add(bar);
+                bars.push(bar);
+
+                // Create text for year
+                const yearGeometry = new THREE.TextGeometry(point.year.toString(), {
+                    font: font,
+                    size: 0.15,
+                    height: 0.02,
+                });
+                const yearMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+                const yearText = new THREE.Mesh(yearGeometry, yearMaterial);
+                yearText.position.set(index - data.length / 2 - 0.3, -1.5, 0);
+                scene.add(yearText);
+
+                // Create text for value
+                const valueGeometry = new THREE.TextGeometry(point.value.toFixed(1) + "°C", {
+                    font: font,
+                    size: 0.15,
+                    height: 0.02,
+                });
+                const valueMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+                const valueText = new THREE.Mesh(valueGeometry, valueMaterial);
+                valueText.position.set(index - data.length / 2 - 0.3, -1.7, 0);
+                scene.add(valueText);
+            });
+        });
+
+        // Add lighting
+        const light = new THREE.AmbientLight(0x404040); // soft white light
+        scene.add(light);
+
+        // Camera position
+        camera.position.z = 5;
+
+        // Animate the bars to move up and down
+        let direction = 1;
+        function animateBars() {
+            bars.forEach((bar, index) => {
+                const speed = 0.005 + index * 0.001; // Different speed for each bar
+                bar.position.y += direction * speed;
+                if (bar.position.y > data[index].value * 0.6 || bar.position.y < data[index].value * 0.3) {
+                    direction *= -1;
+                }
+            });
+        }
+
+        // Main animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            animateBars();
+            scene.rotation.y += 0.005; // Slow rotation of the graph
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Resize handling
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.5);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+   
+    </script>
+</body>
+</html>
